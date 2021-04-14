@@ -93,6 +93,8 @@ public class MainActivity extends Activity implements CameraBridgeViewBase.CvCam
         AssetManager assetManager = getAssets();
         InputStream istr = assetManager.open("a.jpeg");
         Bitmap bitmap = BitmapFactory.decodeStream(istr);
+        Bitmap b = Bitmap.createScaledBitmap(bitmap, 120, 120, false);
+        Utils.bitmapToMat(b, img1);
         Utils.bitmapToMat(bitmap, img1);
         Imgproc.cvtColor(img1, img1, Imgproc.COLOR_RGB2GRAY);
         img1.convertTo(img1, 0); //converting the image to match with the type of the cameras image
